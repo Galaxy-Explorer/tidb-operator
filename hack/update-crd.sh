@@ -26,7 +26,7 @@ cd ${ROOT}
 source hack/lib.sh
 
 CONTROLLER_GEN=${OUTPUT_BIN}/controller-gen
-hack::ensure_controller_gen
+# hack::ensure_controller_gen
 
 echo "Generating CRDs ..."
 
