@@ -102,3 +102,11 @@ type TidbNGMonitoringListerExpansion interface{}
 // TidbNGMonitoringNamespaceListerExpansion allows custom methods to be added to
 // TidbNGMonitoringNamespaceLister.
 type TidbNGMonitoringNamespaceListerExpansion interface{}
+
+// YuLongListerExpansion allows custom methods to be added to
+// YuLongLister.
+type YuLongListerExpansion interface{}
+
+// YuLongNamespaceListerExpansion allows custom methods to be added to
+// YuLongNamespaceLister.
+type YuLongNamespaceListerExpansion interface{}

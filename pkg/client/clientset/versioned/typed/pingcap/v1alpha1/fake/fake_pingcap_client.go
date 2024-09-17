@@ -69,6 +69,10 @@ func (c *FakePingcapV1alpha1) TidbNGMonitorings(namespace string) v1alpha1.TidbN
 	return &FakeTidbNGMonitorings{c, namespace}
 }
 
+func (c *FakePingcapV1alpha1) YuLongs(namespace string) v1alpha1.YuLongInterface {
+	return &FakeYuLongs{c, namespace}
+}
+
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
 func (c *FakePingcapV1alpha1) RESTClient() rest.Interface {

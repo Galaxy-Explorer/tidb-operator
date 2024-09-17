@@ -43,6 +43,8 @@ type Interface interface {
 	TidbMonitors() TidbMonitorInformer
 	// TidbNGMonitorings returns a TidbNGMonitoringInformer.
 	TidbNGMonitorings() TidbNGMonitoringInformer
+	// YuLongs returns a YuLongInformer.
+	YuLongs() YuLongInformer
 }
 
 type version struct {
@@ -109,4 +111,9 @@ func (v *version) TidbMonitors() TidbMonitorInformer {
 // TidbNGMonitorings returns a TidbNGMonitoringInformer.
 func (v *version) TidbNGMonitorings() TidbNGMonitoringInformer {
 	return &tidbNGMonitoringInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// YuLongs returns a YuLongInformer.
+func (v *version) YuLongs() YuLongInformer {
+	return &yuLongInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

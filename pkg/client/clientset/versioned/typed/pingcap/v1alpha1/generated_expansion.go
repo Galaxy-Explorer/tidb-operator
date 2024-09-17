@@ -36,3 +36,5 @@ type TidbInitializerExpansion interface{}
 type TidbMonitorExpansion interface{}
 
 type TidbNGMonitoringExpansion interface{}
+
+type YuLongExpansion interface{}

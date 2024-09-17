@@ -25,6 +25,8 @@ Resource Types:
 <a href="#tidbinitializer">TidbInitializer</a>
 </li><li>
 <a href="#tidbmonitor">TidbMonitor</a>
+</li><li>
+<a href="#yulong">YuLong</a>
 </li></ul>
 <h3 id="backup">Backup</h3>
 <p>
@@ -3213,6 +3215,90 @@ TidbMonitorStatus
 </td>
 <td>
 <p>Most recently observed status of the TidbMonitor</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="yulong">YuLong</h3>
+<p>
+<p>YuLong is the control script&rsquo;s spec</p>
+</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>apiVersion</code></br>
+string</td>
+<td>
+<code>
+pingcap.com/v1alpha1
+</code>
+</td>
+</tr>
+<tr>
+<td>
+<code>kind</code></br>
+string
+</td>
+<td><code>YuLong</code></td>
+</tr>
+<tr>
+<td>
+<code>metadata</code></br>
+<em>
+<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#objectmeta-v1-meta">
+Kubernetes meta/v1.ObjectMeta
+</a>
+</em>
+</td>
+<td>
+Refer to the Kubernetes API documentation for the fields of the
+<code>metadata</code> field.
+</td>
+</tr>
+<tr>
+<td>
+<code>spec</code></br>
+<em>
+<a href="#yulongspec">
+YuLongSpec
+</a>
+</em>
+</td>
+<td>
+<br/>
+<br/>
+<table>
+<tr>
+<td>
+<code>clusterName</code></br>
+<em>
+string
+</em>
+</td>
+<td>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<code>status</code></br>
+<em>
+<a href="#yulongstatus">
+YuLongStatus
+</a>
+</em>
+</td>
+<td>
+<p>Most recently observed status of the YuLong</p>
 </td>
 </tr>
 </tbody>
@@ -27398,6 +27484,178 @@ map[github.com/pingcap/tidb-operator/pkg/apis/pingcap/v1alpha1.StorageVolumeName
 <td>
 <em>(Optional)</em>
 <p>Represents the latest available observations of a component&rsquo;s state.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="yulongcondition">YuLongCondition</h3>
+<p>
+(<em>Appears on:</em>
+<a href="#yulongstatus">YuLongStatus</a>)
+</p>
+<p>
+<p>YuLongCondition describes the state of a yu long at a certain point.</p>
+</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>type</code></br>
+<em>
+<a href="#yulongconditiontype">
+YuLongConditionType
+</a>
+</em>
+</td>
+<td>
+<p>Type of the condition.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>status</code></br>
+<em>
+<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#conditionstatus-v1-core">
+Kubernetes core/v1.ConditionStatus
+</a>
+</em>
+</td>
+<td>
+<p>Status of the condition, one of True, False, Unknown.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>lastUpdateTime</code></br>
+<em>
+<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#time-v1-meta">
+Kubernetes meta/v1.Time
+</a>
+</em>
+</td>
+<td>
+<p>The last time this condition was updated.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>lastTransitionTime</code></br>
+<em>
+<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#time-v1-meta">
+Kubernetes meta/v1.Time
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>Last time the condition transitioned from one status to another.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>reason</code></br>
+<em>
+string
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>The reason for the condition&rsquo;s last transition.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>message</code></br>
+<em>
+string
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>A human readable message indicating details about the transition.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="yulongconditiontype">YuLongConditionType</h3>
+<p>
+(<em>Appears on:</em>
+<a href="#yulongcondition">YuLongCondition</a>)
+</p>
+<p>
+<p>YuLongConditionType represents a yu long condition value.</p>
+</p>
+<h3 id="yulongspec">YuLongSpec</h3>
+<p>
+(<em>Appears on:</em>
+<a href="#yulong">YuLong</a>)
+</p>
+<p>
+<p>YuLongSpec describes the attributes that a user creates on a tidb cluster</p>
+</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>clusterName</code></br>
+<em>
+string
+</em>
+</td>
+<td>
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="yulongstatus">YuLongStatus</h3>
+<p>
+(<em>Appears on:</em>
+<a href="#yulong">YuLong</a>)
+</p>
+<p>
+</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>usedSize</code></br>
+<em>
+string
+</em>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<code>conditions</code></br>
+<em>
+<a href="#yulongcondition">
+[]YuLongCondition
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>Represents the latest available observations of a YuLong&rsquo;s state.</p>
 </td>
 </tr>
 </tbody>

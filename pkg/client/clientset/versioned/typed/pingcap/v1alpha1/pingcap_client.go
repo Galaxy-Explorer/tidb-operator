@@ -36,6 +36,7 @@ type PingcapV1alpha1Interface interface {
 	TidbInitializersGetter
 	TidbMonitorsGetter
 	TidbNGMonitoringsGetter
+	YuLongsGetter
 }
 
 // PingcapV1alpha1Client is used to interact with features provided by the pingcap.com group.
@@ -85,6 +86,10 @@ func (c *PingcapV1alpha1Client) TidbMonitors(namespace string) TidbMonitorInterf
 
 func (c *PingcapV1alpha1Client) TidbNGMonitorings(namespace string) TidbNGMonitoringInterface {
 	return newTidbNGMonitorings(c, namespace)
+}
+
+func (c *PingcapV1alpha1Client) YuLongs(namespace string) YuLongInterface {
+	return newYuLongs(c, namespace)
 }
 
 // NewForConfig creates a new PingcapV1alpha1Client for the given config.
