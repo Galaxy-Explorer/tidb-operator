@@ -38,6 +38,7 @@ import (
 	"github.com/pingcap/tidb-operator/pkg/controller/tidbinitializer"
 	"github.com/pingcap/tidb-operator/pkg/controller/tidbmonitor"
 	"github.com/pingcap/tidb-operator/pkg/controller/tidbngmonitoring"
+	"github.com/pingcap/tidb-operator/pkg/controller/yulong"
 	"github.com/pingcap/tidb-operator/pkg/features"
 	"github.com/pingcap/tidb-operator/pkg/metrics"
 	"github.com/pingcap/tidb-operator/pkg/scheme"
@@ -183,6 +184,7 @@ func main() {
 			tidbmonitor.NewController(deps),
 			tidbngmonitoring.NewController(deps),
 			tidbdashboard.NewController(deps),
+			yulong.NewController(deps),
 		}
 		if features.DefaultFeatureGate.Enabled(features.AutoScaling) {
 			controllers = append(controllers, autoscaler.NewController(deps))
