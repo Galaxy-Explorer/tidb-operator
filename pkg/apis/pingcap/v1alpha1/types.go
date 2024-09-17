@@ -3412,3 +3412,81 @@ type ScalePolicy struct {
 	// +optional
 	ScaleOutParallelism *int32 `json:"scaleOutParallelism,omitempty"`
 }
+
+// +genclient
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// YuLong is the control script's spec
+//
+// +k8s:openapi-gen=true
+// +kubebuilder:resource:shortName="yl"
+// +kubebuilder:printcolumn:name="Ready",type=string,JSONPath=`.status.conditions[?(@.type=="Ready")].status`
+// +kubebuilder:printcolumn:name="ClusterName",type=string,JSONPath=`.spec.clusterName`,description="The name of the tidb"
+// +kubebuilder:printcolumn:name="UsedSize",type=string,JSONPath=`.status.usedSize`,description="The used size of the tiKV"
+type YuLong struct {
+	metav1.TypeMeta `json:",inline"`
+	// +k8s:openapi-gen=false
+	metav1.ObjectMeta `json:"metadata"`
+
+	Spec YuLongSpec `json:"spec"`
+
+	// +k8s:openapi-gen=false
+	// Most recently observed status of the YuLong
+	Status YuLongStatus `json:"status,omitempty"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// YuLongList is YuLong list
+// +k8s:openapi-gen=true
+type YuLongList struct {
+	metav1.TypeMeta `json:",inline"`
+	// +k8s:openapi-gen=false
+	metav1.ListMeta `json:"metadata"`
+
+	Items []YuLong `json:"items"`
+}
+
+// YuLongSpec describes the attributes that a user creates on a tidb cluster
+// +k8s:openapi-gen=true
+type YuLongSpec struct {
+	ClusterName string `json:"clusterName"`
+}
+
+type YuLongStatus struct {
+	UsedSize string `json:"usedSize"`
+
+	// Represents the latest available observations of a YuLong's state.
+	// +optional
+	// +nullable
+	Conditions []YuLongCondition `json:"conditions,omitempty"`
+}
+
+// YuLongCondition describes the state of a yu long at a certain point.
+type YuLongCondition struct {
+	// Type of the condition.
+	Type YuLongConditionType `json:"type"`
+	// Status of the condition, one of True, False, Unknown.
+	Status corev1.ConditionStatus `json:"status"`
+	// The last time this condition was updated.
+	// +nullable
+	LastUpdateTime metav1.Time `json:"lastUpdateTime,omitempty"`
+	// Last time the condition transitioned from one status to another.
+	// +optional
+	// +nullable
+	LastTransitionTime metav1.Time `json:"lastTransitionTime,omitempty"`
+	// The reason for the condition's last transition.
+	// +optional
+	Reason string `json:"reason,omitempty"`
+	// A human readable message indicating details about the transition.
+	// +optional
+	Message string `json:"message,omitempty"`
+}
+
+// YuLongConditionType represents a yu long condition value.
+type YuLongConditionType string
+
+const (
+	// YuLongReady indicates that the get tidb cluster size.
+	YuLongReady YuLongConditionType = "Ready"
+)

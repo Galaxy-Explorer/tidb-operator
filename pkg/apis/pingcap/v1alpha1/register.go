@@ -71,6 +71,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&TidbNGMonitoringList{},
 		&TidbDashboard{},
 		&TidbDashboardList{},
+		&YuLong{},
+		&YuLongList{},
 	)
 
 	metav1.AddToGroupVersion(scheme, SchemeGroupVersion)
