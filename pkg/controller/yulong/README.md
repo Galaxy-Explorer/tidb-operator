@@ -137,9 +137,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 开发YuLong的controller，逻辑涉及到的所有文件如下：
 
 ```bash
- pkg/controller/yulong/yulong_condition_updater.go
+pkg/controller/yulong/yulong_condition_updater.go
 pkg/controller/yulong/yulong_control.go
- pkg/controller/yulong/yulong_controller.go
+pkg/controller/yulong/yulong_controller.go
 pkg/util/yulong/yulong.go
 ```
 
